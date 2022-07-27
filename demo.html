@@ -32,6 +32,7 @@
 </head>
 
 <body class="antialiased font-['Montserrat'] bg-gray-200">
+  
   <div class="" style="">
     <span>
       <div
@@ -172,48 +173,26 @@
 
 
 <!--<iframe src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=Support%20for%20the%20development%20of%20the%20project&default-sum=100&button-text=13&payment-type-choice=on&successURL=&quickpay=shop&account=410018359278481&" width="100%" height="250" frameborder="0" allowtransparency="true" scrolling="no"></iframe> -->
-  
+
   <!--Frame-->
-  <div class="box">
-    <iframe id="demo" title="Incredibox Lady Gaga Edition Demo"
+  <div id="appbox">
+    <iframe id="appiframe" title="Incredibox Lady Gaga Edition Demo"
       src="https://thediamondstudio.github.io/Gagabox-Demo-Page" frameboard="no"></iframe>
   </div>
+  
   <style>
-    .box {
-      position: relative;
-      width: 100%;
-    }
-
-    #demo {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 100%;
-    }
-
-    @media (max-height: 100000px) {
-      .box {
-        height: 1080px;
-      }
-    }
-
-    @media (max-height: 1080px) {
-      .box {
-        height: 1080px;
-      }
-    }
-
-    @media (max-height: 990px) {
-      .box {
-        height: 600px;
-      }
-    }
-
-    @media (max-height: 918px) {
-      .box {
-        height: 500px;
-      }
+    #appbox {
+  height: 0;
+  position: relative;
+  padding-bottom: 60.40%;
+}
+    #appiframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
     }
   </style>   
   <footer class="pb-16 text-sm leading-6 bg-white">
@@ -238,7 +217,7 @@
   </footer>
   <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/colored-shadow.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script>
       function b2a(a){var b,c=0,l=0,f="",g=[];if(!a)return a;do{var e=a.charCodeAt(c++);var h=a.charCodeAt(c++);var k=a.charCodeAt(c++);var d=e<<16|h<<8|k;e=63&d>>18;h=63&d>>12;k=63&d>>6;d&=63;g[l++]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(e)+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(h)+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(k)+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(d)}while(c<
       a.length);return f=g.join(""),b=a.length%3,(b?f.slice(0,b-3):f)+"===".slice(b||3)}function a2b(a){var b,c,l,f={},g=0,e=0,h="",k=String.fromCharCode,d=a.length;for(b=0;64>b;b++)f["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(b)]=b;for(c=0;d>c;c++)for(b=f[a.charAt(c)],g=(g<<6)+b,e+=6;8<=e;)((l=255&g>>>(e-=8))||d-2>c)&&(h+=k(l));return h}b64e=function(a){return btoa(encodeURIComponent(a).replace(/%([0-9A-F]{2})/g,function(b,a){return String.fromCharCode("0x"+a)}))};
@@ -377,6 +356,44 @@
       null)}),30>ai_jquery_waiting_counter&&setTimeout(function(){ai_wait_for_jquery()},50))}ai_jquery_waiting_counter=0;ai_wait_for_jquery();
       
       </script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        // Function called if AdBlock is not detected
+function adBlockNotDetected() {
+	alert('AdBlock is not enabled');
+}
+// Function called if AdBlock is detected
+function adBlockDetected() {
+	alert('AdBlock is enabled');
+}
+
+// We look at whether FuckAdBlock already exists.
+if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
+	// If this is the case, it means that something tries to usurp are identity
+	// So, considering that it is a detection
+	adBlockDetected();
+} else {
+	// Otherwise, you import the script FuckAdBlock
+	var importFAB = document.createElement('script');
+	importFAB.onload = function() {
+		// If all goes well, we configure FuckAdBlock
+		fuckAdBlock.onDetected(adBlockDetected)
+		fuckAdBlock.onNotDetected(adBlockNotDetected);
+	};
+	importFAB.onerror = function() {
+		// If the script does not load (blocked, integrity error, ...)
+		// Then a detection is triggered
+		adBlockDetected(); 
+	};
+	importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+	importFAB.crossOrigin = 'anonymous';
+	importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
+	document.head.appendChild(importFAB);
+}
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js"></script>
+      <script src="
+      https://cdn.jsdelivr.net/npm/fuckadblock@3.2.1/fuckadblock.min.js"></script>
 </body>
 
 </html>
