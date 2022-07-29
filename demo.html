@@ -35,239 +35,67 @@
 </head>
 
 <body class="antialiased font-['Montserrat'] bg-gray-200">
-  
+
   <div class="" style="">
-    <div id="detect font-['Montserrat']"></div>
-  <div class="wrapper">
-    <div class="content">
-      <div class="warn-icon">
-        <span class="icon"><i class="fas fa-exclamation"></i></span>
-      </div>
-      <h2>AdBlock Detected!</h2>
-      <p>Our website is made possible by displaying ads to our visitors. Please supporting us by whitelisting our website.</p>
-      <div class="btn">
-        <div class="bg-layer"></div>
-        <button>Okay, I'll Whitelist</button>
-      </div>
-    </div>
-  </div>
-  <style>
-    ::selection{
-  color: #fff;
-  background: #9b27ca;
-}
     
-    
-    .wrapper{
-  position: absolute;
-  max-width: 480px;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  padding: 40px 30px;
-  background: #fff;
-  border-radius: 15px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(1.2);
-  box-shadow: 10px 10px 15px rgba(0,0,0,0.06);
-  transition: opacity 0.2s 0s ease-in-out,
-              transform 0.2s 0s ease-in-out;
-}
-.wrapper.show{
-  opacity: 1;
-  pointer-events: auto;
-  transform:translate(-50%, -50%) scale(1);
-}
-.wrapper .content,
-.content .warn-icon,
-.warn-icon .icon{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.wrapper .content{
-  flex-direction: column;
-}
-.content .warn-icon{
-  height: 115px;
-  width: 115px;
-  border-radius: 50%;
-  background: linear-gradient(#9b27ca 0%, #9927cf 0%, #d33639 100%, #f92121 100%);
-}
-.warn-icon .icon{
-  height: 100px;
-  width: 100px;
-  background: #fff;
-  border-radius: inherit;
-}
-.warn-icon .icon i{
-  background: linear-gradient(#9b27ca 0%, #9927cf 0%, #d33639 100%, #f92121 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 50px;
-}
-.content h2{
-  margin-top: 35px;
-  font-size: 32px;
-}
-.content p{
-  font-size: 19px;
-  text-align: center;
-  margin-top: 20px;
-}
-.btn{
-  height: 57px;
-  width: 223px;
-  margin-top: 30px;
-  border-radius: 50px;
-  position: relative;
-  overflow: hidden;
-}
-.btn .bg-layer{
-  height: 100%;
-  width: 300%;
-  position: absolute;
-  left: -100%;
-  background: -webkit-linear-gradient(135deg, #9b27ca, #d33639, #9b27ca, #d33639);
-  transition: all 0.4s ease;
-}
-.btn:hover .bg-layer{
-  left: 0;
-}
-.content button{
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  background: none;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  color: #fff;
-  cursor: pointer;
-}
-  </style>
-
-  <script>
-    const detect = document.querySelector("#detect");
-    const wrapper = document.querySelector(".wrapper");
-    const button = wrapper.querySelector("button");
-
-    let adClasses = ["ad", "ads", "adsbox", "doubleclick", "ad-placement", "ad-placeholder", "adbadge", "BannerAd"];
-    for(let item of adClasses){
-      detect.classList.add(item);
-    }
-    let getProperty = window.getComputedStyle(detect).getPropertyValue("display");
-    if(!wrapper.classList.contains("show")){
-      getProperty == "none" ? wrapper.classList.add("show") : wrapper.classList.remove("show");
-    }
-    button.addEventListener("click", ()=>{
-      wrapper.classList.remove("show");
-    });
-  </script>
     <!--Header-->
 
-    <div class="relative bg-white overflow-hidden">
-      <div class="max-w-7xl mx-auto">
-        <div class="relative z-10 pb-2 bg-white lg:max-w-2xl lg:w-full">
-          <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
-            fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <polygon points="50,0 100,0 50,100 0,100"></polygon>
-          </svg>
-
-          <div x-data="Components.popover({ open: false, focus: true })" x-init="init()" @keydown.escape="onEscape"
-            @close-popover-group.window="onClosePopoverGroup">
-            <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
-              <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
-                <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-                  <div class="flex items-center justify-between w-full md:w-auto">
-                    <a href="#">
-                      <span class="sr-only">Workflow</span>
-                      <img alt="Workflow" class="h-8 w-auto sm:h-10"
-                        src="https://tailwindui.com/img/logos/workflow-mark-purple-600.svg">
-                    </a>
-                    <div class="-mr-2 flex items-center md:hidden">
-                      <button type="button"
-                        class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
-                        @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
-                        :aria-expanded="open.toString()">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="h-6 w-6" x-description="Heroicon name: outline/menu"
-                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                          stroke="currentColor" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-
-                  <a href="#" class="font-medium text-gray-500 hover:text-gray-900" >Download</a>
-
-                  <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Demo</a>
-
-                  <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Versions</a>
-
-                  <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Donate</a>
-
-                  
-                </div>
-              </nav>
+    <nav x-data="{ open: false }" class="white ">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
             </div>
-
-
-            <div x-show="open" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 scale-95"
-              x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in"
-              x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-              x-description="Mobile menu, show/hide based on menu open state."
-              class="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden" x-ref="panel"
-              @click.away="open = false" style="display: none;">
-              <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-                <div class="px-5 pt-4 flex items-center justify-between">
-                  <div>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-purple-600.svg" alt="">
-                  </div>
-                  <div class="-mr-2">
-                    <button type="button"
-                      class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
-                      @click="toggle">
-                      <span class="sr-only">Close main menu</span>
-                      <svg class="h-6 w-6" x-description="Heroicon name: outline/x" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="px-2 pt-2 pb-3 space-y-1">
-
-                  <a href="#"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Download</a>
-
-                  <a href="#"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Demo</a>
-
-                  <a href="#"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Versions</a>
-
-                  <a href="#"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Donate</a>
-
-                </div>
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4 font-['Montserrat']">
+                
+                  <a href="#" class="transition  text-gray-500 hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-gray-900 ease-in-out">Download</a>
+                
+                  <a href="#" class="transition  text-gray-500 hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-gray-900 ease-in-out">Demo</a>
+                
+                  <a href="#" class="transition  text-gray-500 hover:bg-gray-300 hover:text-gray-900  px-3 py-2 rounded-md text-sm font-medium ease-in-out " >Versions</a>
+                
+                  <a href="#" class="transition  text-gray-500 hover:bg-gray-300 hover:text-gray-900  px-3 py-2 rounded-md text-sm font-medium ease-in-out">Donate</a>
+                
+                  
                 
               </div>
             </div>
-
           </div>
-
           
+          <div class="-mr-2 flex md:hidden">
+            <!-- Mobile menu button -->
+            <button type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()">
+              <span class="sr-only">Open main menu</span>
+              <svg x-state:on="Menu open" x-state:off="Menu closed" class="h-6 w-6 hidden" :class="{ 'hidden': open, 'block': !(open) }" x-description="Heroicon name: outline/menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+</svg>
+              <svg x-state:on="Menu open" x-state:off="Menu closed" class="h-6 w-6 block" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+</svg>
+            </button>
+          </div>
         </div>
       </div>
-      
-    </div>
+
+      <div x-description="Mobile menu, show/hide based on menu state." class="md:hidden" id="mobile-menu" x-show="open">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          
+            <a href="#" class="bg-gray-900 text-white  block px-3 py-2 rounded-md text-base font-medium" aria-current="page" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Download</a>
+          
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white  block px-3 py-2 rounded-md text-base font-medium" x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Demo</a>
+          
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white  block px-3 py-2 rounded-md text-base font-medium" x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Versions</a>
+          
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white  block px-3 py-2 rounded-md text-base font-medium" x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Donate</a>
+          
+            
+          
+        </div>
+        
+      </div>
+    </nav>
 
   </div>
 
