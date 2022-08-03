@@ -38,62 +38,119 @@
     
     <!--Header-->
 
-    <nav x-data="{ open: false }" class="white ">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <div class="flex items-center">
-            <div class="flex-shrink-0">
-              <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-            </div>
-            <div class="hidden md:block">
-              <div class="ml-10 flex items-baseline space-x-4 font-['Montserrat']">
-                
-                  <a href="#" class="transition  text-gray-500 hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-gray-900 ease-in-out">Download</a>
-                
-                  <a href="#" class="transition  text-gray-500 hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-gray-900 ease-in-out">Demo</a>
-                
-                  <a href="#" class="transition  text-gray-500 hover:bg-gray-300 hover:text-gray-900  px-3 py-2 rounded-md text-sm font-medium ease-in-out " >Versions</a>
-                
-                  <a href="#" class="transition  text-gray-500 hover:bg-gray-300 hover:text-gray-900  px-3 py-2 rounded-md text-sm font-medium ease-in-out">Donate</a>
-                
-                  
-                
+    <div x-data="Components.popover({ open: false, focus: true })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
+      <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
+        <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+          <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+            <div class="flex items-center justify-between w-full md:w-auto">
+              <a href="#">
+                <span class="sr-only">Workflow</span>
+                <img alt="Workflow" class="h-8 w-auto sm:h-10" src="http://cdn.shopify.com/s/files/1/1477/6546/products/briefs_3dcb01d5-3aa0-4979-a831-bc00a00c5a7f_grande.png?v=1588779395">
+              </a>
+              <div class="-mr-2 flex items-center md:hidden">
+                <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false" :aria-expanded="open.toString()">
+                  <span class="sr-only">Open main menu</span>
+                  <svg class="h-6 w-6" x-description="Heroicon name: outline/menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
-          
-          <div class="-mr-2 flex md:hidden">
-            <!-- Mobile menu button -->
-            <button type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()">
-              <span class="sr-only">Open main menu</span>
-              <svg x-state:on="Menu open" x-state:off="Menu closed" class="h-6 w-6 hidden" :class="{ 'hidden': open, 'block': !(open) }" x-description="Heroicon name: outline/menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-</svg>
-              <svg x-state:on="Menu open" x-state:off="Menu closed" class="h-6 w-6 block" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-</svg>
-            </button>
+          <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+  
+            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Download</a>
+  
+            <a href="demo.html" class="font-medium text-gray-500 hover:text-gray-900">Demo</a>
+  
+            <a href="#versions" class="font-medium text-gray-500 hover:text-gray-900">Versions</a>
+  
+            <button id="donate" onclick="" class="font-medium text-gray-500 hover:text-gray-900" aria-expanded="false">Donate</button>
+  
+            <script>
+              // With the above scripts loaded, you can call `tippy()` with a CSS
+              // selector and a `content` prop:
+              tippy('#donate', {
+                content: '<iframe src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&default-sum=100&button-text=13&payment-type-choice=on&successURL=&quickpay=shop&account=410018359278481&targets=%D0%9F%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%20%D0%BF%D0%BE%20%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B5&" width="423" height="222" frameborder="0" allowtransparency="true" scrolling="no"></iframe>',
+                allowHTML: true,
+                theme: 'donate',
+                placement: 'bottom',
+                animation: "shift-away",
+                interactive: true,
+                trigger: 'click',
+              });
+            </script>
           </div>
+        </nav>
+      </div>
+  
+      <style>
+        .tippy-box[data-theme~='donate'] {
+          background-color: #00000000;
+          overflow: hidden;
+        }
+  
+        .tippy-box[data-theme~='donate'][data-placement^='top']>.tippy-arrow::before {
+          border-top-color: #00000000;
+        }
+  
+        .tippy-box[data-theme~='donate'][data-placement^='bottom']>.tippy-arrow::before {
+          border-bottom-color: #00000000;
+        }
+  
+        .tippy-box[data-theme~='donate'][data-placement^='left']>.tippy-arrow::before {
+          border-left-color: #00000000;
+        }
+  
+        .tippy-box[data-theme~='donate'][data-placement^='right']>.tippy-arrow::before {
+          border-right-color: #00000000;
+        }
+      </style>
+  
+      <div x-show="open" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" x-description="Mobile menu, show/hide based on menu open state." class="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden" x-ref="panel" @click.away="open = false" style="display: none;">
+        <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+          <div class="px-5 pt-4 flex items-center justify-between">
+            <div>
+              <img class="h-8 w-auto" alt="" src="http://cdn.shopify.com/s/files/1/1477/6546/products/briefs_3dcb01d5-3aa0-4979-a831-bc00a00c5a7f_grande.png?v=1588779395">
+            </div>
+            <div class="-mr-2">
+              <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" @click="toggle">
+                <span class="sr-only">Close main menu</span>
+                <svg class="h-6 w-6" x-description="Heroicon name: outline/x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <div class="px-2 pt-2 pb-3 space-y-1">
+  
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Download</a>
+  
+            <a href="demo.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Demo</a>
+  
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Versions</a>
+  
+            <button id="donate2" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" aria-expanded="false">Donate</button>
+  
+          </div>
+          <script>
+            // With the above scripts loaded, you can call `tippy()` with a CSS
+            // selector and a `content` prop:
+            tippy('#donate2', {
+              content: '<iframe src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&default-sum=100&button-text=13&payment-type-choice=on&successURL=&quickpay=shop&account=410018359278481&targets=%D0%9F%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%20%D0%BF%D0%BE%20%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B5&" width="423" height="222" frameborder="0" allowtransparency="true" scrolling="no"></iframe>',
+              allowHTML: true,
+              theme: 'donate',
+              placement: 'bottom',
+              animation: "shift-away",
+              interactive: true,
+              trigger: 'click',
+            });
+          </script>
         </div>
       </div>
-
-      <div x-description="Mobile menu, show/hide based on menu state." class="md:hidden" id="mobile-menu" x-show="open">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          
-            <a href="#" class="bg-gray-900 text-white  block px-3 py-2 rounded-md text-base font-medium" aria-current="page" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Download</a>
-          
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white  block px-3 py-2 rounded-md text-base font-medium" x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Demo</a>
-          
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white  block px-3 py-2 rounded-md text-base font-medium" x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Versions</a>
-          
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white  block px-3 py-2 rounded-md text-base font-medium" x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Donate</a>
-          
-            
-          
-        </div>
-        
-      </div>
-    </nav>
+  
+    </div>
 
   </div>
 
