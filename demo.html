@@ -73,7 +73,7 @@
             <div class="flex items-center justify-between w-full md:w-auto">
               <a href="index.html">
                 <span class="sr-only">Gagabox</span>
-                <img alt="Workflow" class="h-8 w-auto sm:h-10" src="http://cdn.shopify.com/s/files/1/1477/6546/products/briefs_3dcb01d5-3aa0-4979-a831-bc00a00c5a7f_grande.png?v=1588779395">
+                <img alt="Workflow" class="h-8 w-auto sm:h-10 " src="http://cdn.shopify.com/s/files/1/1477/6546/products/briefs_3dcb01d5-3aa0-4979-a831-bc00a00c5a7f_grande.png?v=1588779395">
               </a>
               <div class="-mr-2 flex items-center md:hidden">
                 <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false" :aria-expanded="open.toString()">
@@ -149,7 +149,7 @@
   <!--Frame-->
 
 
-  <div id="appbox">
+  <div id="appbox" class="app">
     <style>
 /* Incredibox popup by Diamond
     Theme for sweatalerts */
@@ -174,11 +174,38 @@ margin-right: -22px;
 width: 40px;
 height: 40px;
 border-radius: 50%;
-
+animation: m .3s cubic-bezier(.175, .885, .32, 1.275) 0s forwards;
 background-repeat: no-repeat;
 background-color: #000;
 cursor: pointer;
-transition: transform .3s ease-out;
+transition: all .3s ease-out;
+}
+@-webkit-keyframes m {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.5);
+		transform: scale(.5)
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		cursor: pointer
+	}
+}
+
+@keyframes m {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.5);
+		transform: scale(.5)
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		cursor: pointer
+	}
 }
 .fs-close:hover {
 transform: none;
@@ -200,7 +227,7 @@ margin-right: 0px;
 }
     </style>
 
-    <button id="toggle" type="button"
+  <button id="toggle" type="button"
     class="fs-close" style="display: flex;
     right: 25px;
     position: absolute;
@@ -216,16 +243,16 @@ margin-right: 0px;
     </path>
   </svg></button>
 
-    <iframe id="appiframe" class="px-3 py-3" title="Incredibox Lady Gaga Edition Demo"
-      src="https://thediamondstudio.github.io/Gagabox-Demo-Page" frameboard="no"></iframe>
+    <iframe id="appiframe" class="py-3" title="Incredibox Lady Gaga Edition Demo"
+      src="https://thediamondstudio.github.io/Gagabox-Demo-Page/" frameboard="no"></iframe>
   </div>
   <style>
     #appbox {
-      height: 0;
-  position: relative;
-  padding-bottom: 60.40%;
-
+    height: 0;
+    position: relative;
+    padding-bottom: 60.40%;
 }
+  
     #appiframe {
   position: absolute;
   left: 0;
@@ -233,6 +260,7 @@ margin-right: 0px;
   width: 100%;
   height: 100%;
 }
+
   </style>   
 <!-- Yandex.RTB R-A-1754644-5 -->
 <div id="yandex_rtb_R-A-1754644-5"></div>
@@ -242,6 +270,7 @@ margin-right: 0px;
     blockId: 'R-A-1754644-5'
   })
 })</script>
+
 <!--Footer-->
 <footer class="p-4 bg-white md:p-8 lg:p-10">
   <div class="mx-auto max-w-screen-xl text-center">
