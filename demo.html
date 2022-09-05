@@ -147,8 +147,6 @@
   })
 })</script>
   <!--Frame-->
-
-
   <div id="appbox" class="app">
     <style>
 /* Incredibox popup by Diamond
@@ -174,7 +172,7 @@ margin-right: -22px;
 width: 40px;
 height: 40px;
 border-radius: 50%;
-animation: m .3s cubic-bezier(.175, .885, .32, 1.275) 0s forwards;
+/*animation: m .3s cubic-bezier(.175, .885, .32, 1.275) 0s forwards;*/
 background-repeat: no-repeat;
 background-color: #000;
 cursor: pointer;
@@ -219,16 +217,11 @@ transition-duration: .1s;
 outline: none;
 box-shadow: inset 0 0 0 0;
 }
-@media only screen and (max-width: 440px) {
-.fs-close {
-margin-top: -22px;
-margin-right: 0px;
-}
-}
+
     </style>
 
-  <button id="toggle" type="button"
-    class="fs-close" style="display: flex;
+ <!-- <button id="toggle" type="button"
+    class="fs-close hidden md:flex" style="
     right: 25px;
     position: absolute;
     top: 20px;" aria-label="Fullscreen">
@@ -241,10 +234,12 @@ margin-right: 0px;
     </path>
     <path d="M22.4 22.4h-3.792c-0.442 0-0.8 0.358-0.8 0.8s0.358 0.8 0.8 0.8v0h4.592c0.221-0.001 0.42-0.090 0.565-0.235l-0 0c0.144-0.145 0.234-0.345 0.235-0.565v-4.592c0-0.442-0.358-0.8-0.8-0.8s-0.8 0.358-0.8 0.8v0z">
     </path>
-  </svg></button>
+  </svg></button> -->
 
     <iframe id="appiframe" class="py-3" title="Incredibox Lady Gaga Edition Demo"
       src="https://thediamondstudio.github.io/Gagabox-Demo-Page/" frameboard="no"></iframe>
+      <!--incredibox_demo/index.html-->
+      <!--https://thediamondstudio.github.io/Gagabox-Demo-Page/-->
   </div>
   <style>
     #appbox {
@@ -259,9 +254,26 @@ margin-right: 0px;
   top: 0;
   width: 100%;
   height: 100%;
+  
 }
 
-  </style>   
+@media only screen and (max-width:650px),screen and (max-height:450px) {
+ #appbox iframe {
+  display:none
+ }
+}
+@media only screen and (max-width: 650px), screen and (max-height: 450px){
+	#appbox::after {
+  position: absolute;
+  top: 50%;
+  margin-top: -12px;
+  width: 100%;
+  text-align: center;
+  color: #2c86fe;
+  content: "Please resize your window";
+}
+}
+  </style>  
 <!-- Yandex.RTB R-A-1754644-5 -->
 <div id="yandex_rtb_R-A-1754644-5"></div>
 <script>window.yaContextCb.push(()=>{
